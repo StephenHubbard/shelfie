@@ -1,0 +1,36 @@
+.product {
+    height: 200px;
+    width: 500px;
+    background-color: #D34735;
+    position: relative;
+    margin: 20px;
+    margin-left: 150px;
+    border-radius: 10px;
+}
+
+.img {
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+}
+
+.product-text {
+    position: absolute;
+    top: 0px;
+    right: 60px;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.delete {
+    bottom: 10px;
+    background-color: #3AD886;
+}
+
+.edit {
+    bottom: 10px;
+    right: 10px;
+    background-color: #3AD886;
+}
