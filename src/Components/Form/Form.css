@@ -47,7 +47,7 @@ input {
     left: 50px;
 }
 
-.input-boxes {
+#input-boxes {
     display: flex;
     flex-direction: column;
     position: absolute;

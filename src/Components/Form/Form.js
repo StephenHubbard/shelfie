@@ -8,19 +8,16 @@ export default class Form extends Component {
         super()
     
         this.state = {
-            image: '',
             name: '',
+            image: '',
             price: '',
         }
     }
 
     cancelButton() {
-        this.setState = {
-            image: '',
-            name: '',
-            price: '',
-        }
-        console.log(this.state)
+        const box = document.getElementById("input-boxes")
+        box.reset();
+        this.setState(this.baseState);
     }
 
     handleUrlChange(e) {
@@ -52,7 +49,7 @@ export default class Form extends Component {
                     products: res.data
                 })
             })
-        this.props.mountAppFn();
+        this.props.getNewProductsFn();
         console.log(this.state)    
     }
 
@@ -63,31 +60,37 @@ export default class Form extends Component {
                 <div className="img-placeholder">
 
                 </div>
-                    <div className="input-boxes">
+                    <form id="input-boxes">
                         <h3>Image Url</h3>
-                        <input 
+                        <input
+                            className="input"
                             type="text" 
                             placeholder="Image Url"
                             onChange={e => this.handleUrlChange(e)}
+                            name='image'
                         />
 
                         <h3>Product Name</h3>
                         <input 
+                            className="input"
                             type="text" 
                             placeholder="Product Name"
                             onChange={e => this.handleNameChange(e)}
+                            name='productName'
                         />
 
                         <h3>Price</h3>
                         <input 
+                            className="input"
                             type="text" 
                             placeholder="Price" 
-                            onChange={e => this.handlePriceChange(e)}                    
+                            onChange={e => this.handlePriceChange(e)}  
+                            name='price'                  
                         />
-                    </div>
+                    </form>
 
                 <button className="cancel" onClick={() => this.cancelButton()}>Cancel</button>
-                <button className="add" onClick={() => this.createProduct()}>Add</button>
+                <button className="add" onClick={(e) => this.createProduct(e)}>Add</button>
                 
             </div>
         )

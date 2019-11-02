@@ -16,8 +16,12 @@ module.exports = {
         const { name, image, price } = req.body;
     
         db.create_product([name, image, price])
-        .then( res => res.sendStatus(200))
-        .catch(err => res.status(500).send(err))
-        console.log("successfully added product")
-    },
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            res.status(500).send('oops.')
+            console.log(err)
+        })
+    }
 }

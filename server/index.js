@@ -10,10 +10,6 @@ const { SERVER_PORT, CONNECTION_STRING } = process.env;
 app.use(express.json());
 
 
-app.get('/api/inventory', ctrl.getInventory)
-app.post('/api/product', ctrl.newProduct)
-
-
 massive(CONNECTION_STRING)
 .then(dbInstance => {
     app.set("db", dbInstance);
@@ -24,3 +20,5 @@ massive(CONNECTION_STRING)
 .catch(err => console.log(err));
 
 
+app.get('/api/inventory', ctrl.getInventory)
+app.post('/api/product', ctrl.newProduct)

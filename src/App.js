@@ -13,7 +13,8 @@ export default class App extends Component {
       this.state = {
           products: [],
       }
-      this.componentDidMount = this.componentDidMount.bind(this)
+      
+      this.getNewProducts = this.getNewProducts.bind(this)
   }
 
   componentDidMount(){
@@ -24,13 +25,23 @@ export default class App extends Component {
     })
   }
 
+  getNewProducts() {
+    axios
+      .get('/api/inventory')
+      .then(res => [
+        this.setState({
+          products: res.data
+        })
+      ])
+  }
+
     render() {
       return (
           <div className="App">
             <Header />
             
-            <Form 
-            mountAppFn={this.componentDidMount}
+            <Form
+            getNewProductsFn = {() => this.getNewProducts}
             />
 
             <Dashboard 
