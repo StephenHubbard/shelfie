@@ -23,9 +23,9 @@ export default class Product extends Component {
                 
                 ) : null }
                 
-                <button className="delete" onClick={() => this.props.deleteProductFn(this.props.productObj.product_id)}>Delete</button>
+                <button className="delete" onClick={() => this.props.deleteProductFn(this.props.productObj.id)}>Delete</button>
                 <button className="edit">Edit</button>
-            </div>
+            </div> 
         )
     }
 }

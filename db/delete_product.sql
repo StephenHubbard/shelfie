@@ -1,3 +1,1 @@
-DELETE FROM products WHERE name = $1;
-
-SELECT * FROM products;
+DELETE FROM products WHERE id = $1;

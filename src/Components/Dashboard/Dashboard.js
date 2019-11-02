@@ -19,6 +19,7 @@ export default class Dashboard extends Component {
             .then(res => {
                 this.props.getNewProductsFn();
             })
+            .catch(err => console.log(err))
     }
 
     render() {

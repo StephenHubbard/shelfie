@@ -8,7 +8,7 @@ export default class Form extends Component {
         super()
     
         this.state = {
-            product_id: '',
+            id: '',
             name: '',
             image: '',
             price: '',
@@ -49,10 +49,10 @@ export default class Form extends Component {
 
     createProduct() {
         axios
-            .post('/api/product', this.state)
+            .post('/api/inventory', this.state)
             .then(res => {
                 this.setState({
-                    products: res.data
+                    products: res.data 
                 })
             })
         this.props.getNewProductsFn();

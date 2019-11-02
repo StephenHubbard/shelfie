@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 app.get('/api/inventory', ctrl.getInventory)
-app.post('/api/product', ctrl.newProduct)
+app.post('/api/inventory', ctrl.newProduct)
 app.delete('/api/inventory/:id', ctrl.deleteProduct)
 
 
