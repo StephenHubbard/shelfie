@@ -14,10 +14,15 @@ export default class Form extends Component {
         }
     }
 
-    cancelButton() {
+    resetInputs() {
         const box = document.getElementById("input-boxes")
         box.reset();
         this.setState(this.baseState);
+    }
+
+    addButton() {
+        this.resetInputs()
+        this.createProduct()
     }
 
     handleUrlChange(e) {
@@ -89,8 +94,8 @@ export default class Form extends Component {
                         />
                     </form>
 
-                <button className="cancel" onClick={() => this.cancelButton()}>Cancel</button>
-                <button className="add" onClick={(e) => this.createProduct(e)}>Add</button>
+                <button className="cancel" onClick={() => this.resetInputs()}>Cancel</button>
+                <button className="add" onClick={(e) => this.addButton(e)}>Add</button>
                 
             </div>
         )

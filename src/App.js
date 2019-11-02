@@ -28,11 +28,12 @@ export default class App extends Component {
   getNewProducts() {
     axios
       .get('/api/inventory')
-      .then(res => [
+      .then(res => {
         this.setState({
           products: res.data
         })
-      ])
+      })
+      console.log("new products")
   }
 
     render() {
@@ -41,12 +42,13 @@ export default class App extends Component {
             <Header />
             
             <Form
-            getNewProductsFn = {() => this.getNewProducts}
+            getNewProductsFn={this.getNewProducts}
             />
 
             <Dashboard 
             products={this.state.products}
             />
+
           </div>
       )
   }
