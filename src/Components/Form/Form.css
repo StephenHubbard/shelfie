@@ -37,15 +37,7 @@ input {
     bottom: 20px;
 }
 
-.img-placeholder {
-    width: 300px;
-    height: 200px;
-    background-color: white;
-    border: 1px solid black;
-    position: absolute;
-    top: 20px;
-    left: 50px;
-}
+
 
 #input-boxes {
     display: flex;

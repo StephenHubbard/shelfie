@@ -10,7 +10,7 @@ export default class Form extends Component {
         this.state = {
             id: '',
             name: '',
-            image: '',
+            image: 'https://epaper.thesangaiexpress.com/images/not_found.png',
             price: '',
         }
     }
@@ -19,6 +19,9 @@ export default class Form extends Component {
         const box = document.getElementById("input-boxes")
         box.reset();
         this.setState(this.baseState);
+        this.setState({
+            image: 'https://epaper.thesangaiexpress.com/images/not_found.png'
+        })
     }
 
     addButton() {
@@ -63,9 +66,8 @@ export default class Form extends Component {
         return (
             <div className="form-container">
 
-                <div className="img-placeholder">
-
-                </div>
+                    <img className="img placeholder" src={this.state.image} alt="current pic" />
+                
                     <form id="input-boxes">
                         <h3>Image Url</h3>
                         <input
