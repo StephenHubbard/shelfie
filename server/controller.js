@@ -13,9 +13,9 @@ module.exports = {
     },
     newProduct: (req, res) => {
         const db = req.app.get('db');
-        const { name, image, price } = req.body;
+        const { id, name, image, price } = req.body;
     
-        db.create_product([name, image, price])
+        db.create_product([id, name, image, price])
         .then(() => {
             res.sendStatus(200);
         })
@@ -23,5 +23,13 @@ module.exports = {
             res.status(500).send('oops.')
             console.log(err)
         })
-    }
+    }, 
+    deleteProduct: (req, res) => {
+        const db = req.app.get('db');
+
+        db.delete_product(+req.params.id)
+        .then(result => {
+            res.status(200).send(result)
+        }).catch(err => console.log(err))
+    },
 }

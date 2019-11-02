@@ -8,6 +8,7 @@ export default class Form extends Component {
         super()
     
         this.state = {
+            product_id: '',
             name: '',
             image: '',
             price: '',

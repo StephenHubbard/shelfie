@@ -47,6 +47,7 @@ export default class App extends Component {
 
             <Dashboard 
             products={this.state.products}
+            getNewProductsFn={this.getNewProducts}
             />
 
           </div>

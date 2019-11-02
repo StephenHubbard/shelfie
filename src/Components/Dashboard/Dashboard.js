@@ -1,11 +1,25 @@
 import React, {Component} from 'react';
 import Product from '../Product/Product';
+import axios from 'axios';
 
 
 export default class Dashboard extends Component {
-    // constructor() {
-    //     super()
-    // }
+    constructor() {
+        super()
+
+    this.deleteProduct = this.deleteProduct.bind(this)
+
+    }
+
+
+
+    deleteProduct(id) {
+        axios   
+            .delete(`api/inventory/${id}`)
+            .then(res => {
+                this.props.getNewProductsFn();
+            })
+    }
 
     render() {
         let key = 0;
@@ -15,6 +29,7 @@ export default class Dashboard extends Component {
                 {this.props.products.map(el => (
                     <Product 
                     productObj={el} key={key++}
+                    deleteProductFn={this.deleteProduct}
                     />
                 ))}
             </div>

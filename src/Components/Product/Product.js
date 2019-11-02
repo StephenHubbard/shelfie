@@ -7,7 +7,7 @@ export default class Product extends Component {
     //     super()
     // }
 
-    render() {
+    render(props) {
         return (
             <div className="product">
 
@@ -23,7 +23,7 @@ export default class Product extends Component {
                 
                 ) : null }
                 
-                <button className="delete">Delete</button>
+                <button className="delete" onClick={() => this.props.deleteProductFn(this.props.productObj.product_id)}>Delete</button>
                 <button className="edit">Edit</button>
             </div>
         )
