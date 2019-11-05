@@ -29,7 +29,7 @@ export default class Product extends Component {
                 
                 <button className="delete" onClick={() => this.deleteBtn()}>Delete</button>
 
-                <Link to="add">
+                <Link to={`/add/${this.props.productObj.id}`}>
                     <button className="edit">Edit</button>
                 </Link>
             </div> 

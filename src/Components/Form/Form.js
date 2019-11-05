@@ -16,13 +16,15 @@ export default class Form extends Component {
             price: '',
             show: true,
         }
+        this.saveChanges = this.saveChanges.bind(this)
     }
 
     componentDidMount() {
-        if (this.state.id) {
+        if (this.props.match.params.id) {
             axios
-                .get(`api/inventory/${this.state.id}`)
+                .get(`api/inventory/${this.props.match.params.id}`)
                 .then(res => {
+
                     let {id, name, image, price} = res.data[0]
                     this.setState({
                         id: id, 
@@ -31,6 +33,7 @@ export default class Form extends Component {
                         price: price, 
                         show: false
                     })
+                    console.log(this.state)
                 })
                 .catch(err => console.log(err))
         }
@@ -39,7 +42,7 @@ export default class Form extends Component {
     saveChanges() {
         axios
             .put(`/api/inventory/${this.state.id}`, this.state)
-            .then(() => this.props.history.push("/api/inventory"))
+            .then(() => this.props.history.push("/"))
             .catch(err => console.log(err))
     }
 
