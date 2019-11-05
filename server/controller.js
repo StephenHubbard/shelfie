@@ -32,4 +32,13 @@ module.exports = {
             res.status(200).send(result)
         }).catch(err => console.log(err))
     },
+    editProduct(req, res) {
+        const db = req.app.get('db')
+        const { name, image, price, id } = req.body
+        db.edit_product(name, price, image, +id)
+        .then(result => {
+            res.status(200).send(result)
+        })
+        .catch(err => console.log(err))
+    }
 }

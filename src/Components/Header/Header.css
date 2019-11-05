@@ -1,9 +1,13 @@
-.header {
+header {
     height: 100px;
     margin: 0;
     background-color: #AB2A19;
     color: white;
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
 }
 
 h1 {
@@ -11,4 +15,23 @@ h1 {
     font-size: 4rem;
     position: absolute;
     left: 30px;
+}
+
+.logo {
+    font-size: 4rem;
+    text-decoration: none;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 1000px;
+    margin-left: 50px;
+}
+
+.header-btn {
+    background-color: rgb(219, 139, 139);
+    width: 200px;
+    margin: 20px;
 }

@@ -1,56 +1,18 @@
 import React, {Component} from 'react';
 import './App.css';
-import axios from 'axios';
-// import Product from "./Components/Product/Product";
-import Header from "./Components/Header/Header";
-import Form from "./Components/Form/Form";
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Header from './Components/Header/Header'
+import Routes from './Routes';
 
-export default class App extends Component {
-  constructor() {
-      super()
+class App extends Component {
   
-      this.state = {
-          products: [],
-      }
-      
-      this.getNewProducts = this.getNewProducts.bind(this)
-  }
-
-  componentDidMount(){
-    axios.get('/api/inventory').then(res=> {
-      this.setState({
-        products: res.data
-      })
-    })
-  }
-
-  getNewProducts() {
-    axios
-      .get('/api/inventory')
-      .then(res => {
-        this.setState({
-          products: res.data
-        })
-      })
-      console.log("new products")
-  }
-
-    render() {
+    render() { 
       return (
-          <div className="App">
-            <Header />
-            
-            <Form
-            getNewProductsFn={this.getNewProducts}
-            />
-
-            <Dashboard 
-            products={this.state.products}
-            getNewProductsFn={this.getNewProducts}
-            />
-
-          </div>
+        <div className="App">
+          <Header />
+          {Routes}
+        </div>
       )
+    }
   }
-}
+  
+export default App;

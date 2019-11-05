@@ -1,19 +1,48 @@
 import React, {Component} from 'react';
 import './Form.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 
 export default class Form extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
     
         this.state = {
             id: '',
             name: '',
             image: 'https://epaper.thesangaiexpress.com/images/not_found.png',
             price: '',
+            show: true,
         }
     }
+
+    componentDidMount() {
+        if (this.state.id) {
+            axios
+                .get(`api/inventory/${this.state.id}`)
+                .then(res => {
+                    let {id, name, image, price} = res.data[0]
+                    this.setState({
+                        id: id, 
+                        name: name, 
+                        image: image, 
+                        price: price, 
+                        show: false
+                    })
+                })
+                .catch(err => console.log(err))
+        }
+    }
+
+    saveChanges() {
+        axios
+            .put(`/api/inventory/${this.state.id}`, this.state)
+            .then(() => this.props.history.push("/api/inventory"))
+            .catch(err => console.log(err))
+    }
+
 
     resetInputs() {
         const box = document.getElementById("input-boxes")
@@ -33,21 +62,18 @@ export default class Form extends Component {
         this.setState({
             image: e.target.value
         })
-        console.log(this.state.image)
     }
 
     handleNameChange(e) {
         this.setState({
             name: e.target.value
         })
-        console.log(this.state.name)
     }
 
     handlePriceChange(e) {
         this.setState({
             price: e.target.value
         })
-        console.log(this.state.price)
     }
 
     createProduct() {
@@ -58,8 +84,7 @@ export default class Form extends Component {
                     products: res.data 
                 })
             })
-        this.props.getNewProductsFn();
-        console.log(this.state)    
+        // this.props.getNewProductsFn();
     }
 
     render() {
@@ -98,7 +123,12 @@ export default class Form extends Component {
                     </form>
 
                 <button className="cancel" onClick={() => this.resetInputs()}>Cancel</button>
-                <button className="add" onClick={(e) => this.addButton(e)}>Add</button>
+
+                <Link to="/">
+                    <button hidden={!this.state.show} className="add" onClick={(e) => this.addButton(e)}>Add</button>
+                </Link>
+
+                <button hidden={this.state.show} className="save" onClick={this.saveChanges}>Save Changes</button>
                 
             </div>
         )

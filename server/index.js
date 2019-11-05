@@ -13,6 +13,7 @@ app.use(express.json());
 app.get('/api/inventory', ctrl.getInventory)
 app.post('/api/inventory', ctrl.newProduct)
 app.delete('/api/inventory/:id', ctrl.deleteProduct)
+app.put('/api/inventory/:id', ctrl.editProduct)
 
 
 massive(CONNECTION_STRING)

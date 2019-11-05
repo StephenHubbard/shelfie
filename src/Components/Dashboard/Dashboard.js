@@ -6,9 +6,31 @@ import axios from 'axios';
 export default class Dashboard extends Component {
     constructor() {
         super()
+    
+        this.state = {
+            products: [],
+        }
+        
+        this.getNewProducts = this.getNewProducts.bind(this)
+    }
 
-    this.deleteProduct = this.deleteProduct.bind(this)
+    componentDidMount(){
+        axios.get('/api/inventory').then(res=> {
+        this.setState({
+            products: res.data
+        })
+        })
+    }
 
+    getNewProducts() {
+        axios
+        .get('/api/inventory')
+        .then(res => {
+            this.setState({
+            products: res.data
+            })
+        })
+        console.log("new products")
     }
 
 
@@ -17,7 +39,7 @@ export default class Dashboard extends Component {
         axios   
             .delete(`api/inventory/${id}`)
             .then(res => {
-                this.props.getNewProductsFn();
+                
             })
             .catch(err => console.log(err))
     }
@@ -27,10 +49,12 @@ export default class Dashboard extends Component {
         
         return (
             <div>
-                {this.props.products.map(el => (
+                {this.state.products.map(el => (
                     <Product 
                     productObj={el} key={key++}
                     deleteProductFn={this.deleteProduct}
+                    getNewProductsFn={this.getNewProducts}
+
                     />
                 ))}
             </div>
