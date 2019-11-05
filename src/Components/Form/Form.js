@@ -104,6 +104,7 @@ export default class Form extends Component {
                             placeholder="Image Url"
                             onChange={e => this.handleUrlChange(e)}
                             name='image'
+                            value={this.state.image}
                         />
 
                         <h3>Product Name</h3>
@@ -113,6 +114,7 @@ export default class Form extends Component {
                             placeholder="Product Name"
                             onChange={e => this.handleNameChange(e)}
                             name='productName'
+                            value={this.state.name}
                         />
 
                         <h3>Price</h3>
@@ -121,7 +123,8 @@ export default class Form extends Component {
                             type="text" 
                             placeholder="Price" 
                             onChange={e => this.handlePriceChange(e)}  
-                            name='price'                  
+                            name='price'
+                            value={this.state.price}
                         />
                     </form>
 
